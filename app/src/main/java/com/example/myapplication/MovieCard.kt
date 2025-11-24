@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.text.style.TextOverflow
 
 @Composable
 fun MovieCard(movie: Movie) {
@@ -45,14 +46,14 @@ fun MovieCard(movie: Movie) {
             // ⭐ Poster
             Box(
                 modifier = Modifier
-                    .size(width = 120.dp, height = 90.dp)
-                    .shadow(
+                    .size(width = 120.dp, height = 90.dp).shadow(
                         10.dp,
                         RoundedCornerShape(16.dp),
                         ambientColor = Color.Black.copy(alpha = 0.15f),
                         spotColor = Color.Black.copy(alpha = 0.25f)
                     )
             ) {
+                // 1. Draw the image first, so it's at the bottom of the stack.
                 AsyncImage(
                     model = movie.image,
                     contentDescription = movie.title,
@@ -60,12 +61,13 @@ fun MovieCard(movie: Movie) {
                     modifier = Modifier.fillMaxSize()
                 )
 
+                // 2. Draw the gradient overlay ON TOP of the image.
                 Box(
                     modifier = Modifier
                         .matchParentSize()
                         .background(
                             Brush.verticalGradient(
-                                listOf(
+                                colors = listOf(
                                     Color.Transparent,
                                     Color.Black.copy(alpha = 0.45f)
                                 )
@@ -118,13 +120,15 @@ fun MovieCard(movie: Movie) {
     }
 }
 @Composable
-fun MovieCard(movie: Movie, navController: NavController) {
+fun MovieCard(movie: Movie, navController: NavController, neighbors: List<List<Int>>, viewModel: RecommendationViewModel) {
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(110.dp)
             .clickable {
+                val neighborsIds = neighbors[movie.id]
+                viewModel.updateRecommendedMovies(neighborsIds)
                 navController.navigate("recommandation")
             }
             .padding(8.dp)
@@ -136,9 +140,18 @@ fun MovieCard(movie: Movie, navController: NavController) {
         )
 
         Column(modifier = Modifier.padding(start = 12.dp)) {
-            Text(movie.title)
+            Text(movie.title, softWrap = false, overflow = TextOverflow.Ellipsis, maxLines = 1)
             Text(movie.genre, color = Color.Red)
             Text(movie.date)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                repeat(movie.rating.toInt() / 2) {
+                    Icon(
+                        imageVector = Icons.Filled.Star,
+                        contentDescription = "",
+                        tint = Color(0xFFFFD700)
+                    )
+                }
+            }
         }
     }
 }

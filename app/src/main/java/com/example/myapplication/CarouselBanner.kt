@@ -1,14 +1,18 @@
 package com.example.myapplication
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -17,21 +21,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.google.accompanist.pager.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun CarouselBanner() {
 
     val images = listOf(
-        "https://picsum.photos/800/400?random=11",
-        "https://picsum.photos/800/400?random=12",
-        "https://picsum.photos/800/400?random=13"
+        "https://wallpaper.forfun.com/fetch/3e/3ef816524739343e1e89ec97141ca6b5.jpeg?w=1470&r=0.5625",
+        "https://wallpaper.forfun.com/fetch/7a/7aedde3fef31bc1d67e591788fe314e5.jpeg?w=1470&r=0.5625",
+        "https://wallpaper.forfun.com/fetch/9b/9b5492391b1baa0e80639a297488c4c5.jpeg?w=1470&r=0.5625"
     )
 
     val pagerState = rememberPagerState()

@@ -68,4 +68,6 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager-indicators:0.31.5-beta")
     implementation("com.google.accompanist:accompanist-flowlayout:0.31.5-beta")
     implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("com.opencsv:opencsv:5.9")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
 }

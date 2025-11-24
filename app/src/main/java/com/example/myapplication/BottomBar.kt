@@ -10,9 +10,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
-import com.example.myapplication.ui.theme.CardDark   // 👉 IMPORTANT
+import com.example.myapplication.ui.theme.CardDark
 
 @Composable
 fun BottomBar() {
@@ -38,20 +42,20 @@ fun BottomBar() {
             }
         )
 
-        NavigationBarItem(
-            selected = selectedIndex == 1,
-            onClick = { selectedIndex = 1 },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search",
-                    tint = Color.White
-                )
-            },
-            label = {
-                Text("Search", color = Color.White)
-            }
-        )
+//        NavigationBarItem(
+//            selected = selectedIndex == 1,
+//            onClick = { selectedIndex = 1 },
+//            icon = {
+//                Icon(
+//                    imageVector = Icons.Default.Search,
+//                    contentDescription = "Search",
+//                    tint = Color.White
+//                )
+//            },
+//            label = {
+//                Text("Search", color = Color.White)
+//            }
+//        )
 
         NavigationBarItem(
             selected = selectedIndex == 2,
@@ -68,20 +72,20 @@ fun BottomBar() {
             }
         )
 
-        NavigationBarItem(
-            selected = selectedIndex == 3,
-            onClick = { selectedIndex = 3 },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Notifications,
-                    contentDescription = "Notifications",
-                    tint = Color.White
-                )
-            },
-            label = {
-                Text("Notif", color = Color.White)
-            }
-        )
+//        NavigationBarItem(
+//            selected = selectedIndex == 3,
+//            onClick = { selectedIndex = 3 },
+//            icon = {
+//                Icon(
+//                    imageVector = Icons.Default.Notifications,
+//                    contentDescription = "Notifications",
+//                    tint = Color.White
+//                )
+//            },
+//            label = {
+//                Text("Notif", color = Color.White)
+//            }
+//        )
 
         NavigationBarItem(
             selected = selectedIndex == 4,
